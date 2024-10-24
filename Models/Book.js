@@ -1,9 +1,15 @@
 import Sequelize from 'sequelize';
 import sequelize from '../Config/db.js';
+import Category from './Category.js'
 
 const Book = sequelize.define('Book', {
 
     //Columnas
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    },
     book: { 
         type: Sequelize.STRING,
         allowNull: false
@@ -23,11 +29,21 @@ const Book = sequelize.define('Book', {
     },
     genre: {
         type: Sequelize.STRING
-    }
+    },
+    CategoryId: { // Campo para la relación con Categoría
+        type: Sequelize.INTEGER,
+        references: {
+            model: Category,
+            key: 'id',
+        },
+    },
 },{
     tableName: 'books',//Nombre de la tabla en Pgadmin
     timestamps: false
 }
 );
+
+Book.belongsTo(Category, { foreignKey: 'CategoryId' });
+Category.hasMany(Book, { foreignKey: 'CategoryId' });
 
 export default Book;
