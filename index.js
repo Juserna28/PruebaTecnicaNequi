@@ -1,12 +1,23 @@
+import express, { json } from 'express';
 import sequelize from './Config/db.js'; 
+import booksRouter from './routes/books.js';
 
-const testConnection = async () => {
+const app = express();
+const port = process.env.PORT || 3000;
+app.use(json());
+
+// Ruta 
+app.use('/api/books', booksRouter);
+
+(async () => {
     try {
-        await sequelize.authenticate();
-        console.log('La conexión a la base de datos se ha establecido correctamente.');
-    } catch (error) {
-        console.error('No se pudo conectar a la base de datos:', error);
-    }
-};
+        await sequelize.sync({ alter: true }); // Ajuste para evitar mdicficacion de tabla
+        console.log(`Conexion correcta`);
 
-testConnection();
+        app.listen(port, () => {
+            console.log(`Servidor corriendo en http://localhost:${port}/api/books`);  //Verificar puerto apra testeo
+        });
+    } catch (error) {
+        console.error('Error en :', error);
+    }
+})();

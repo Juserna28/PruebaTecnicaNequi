@@ -5,4 +5,4 @@ const sequelize = new Sequelize('datoslibros', 'postgres', '123', {
     dialect: 'postgres',
 });
 
-export default sequelize;
+export default  sequelize;
