@@ -1,6 +1,7 @@
 import express from 'express';
-const router = express.Router();
 import Category from '../Models/Category.js';
+
+const router = express.Router();
 
 // Crear una categoría
 router.post('/', async (req, res) => {
@@ -13,7 +14,6 @@ router.post('/', async (req, res) => {
         res.status(500).json({ message: 'Error al crear la categoría', error: error.message });
     }
 });
-
 
 // Obtener todas las categorías
 router.get('/', async (req, res) => {
