@@ -29,9 +29,6 @@ Aqui pueden salir 2 posibles resultados, uno exitoso mostrandonos por consola cu
 - Ingresamos al archivo index.js
 - Cambiamos el puerto en la linea numero 7, en vez de "3000" por algun puerto que se tenga disponible
 
-
-# Project Title
-
 # Explicacion clases
 
 ## Carpeta Config
