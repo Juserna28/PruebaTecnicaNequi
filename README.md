@@ -28,3 +28,50 @@ Aqui pueden salir 2 posibles resultados, uno exitoso mostrandonos por consola cu
 
 - Ingresamos al archivo index.js
 - Cambiamos el puerto en la linea numero 7, en vez de "3000" por algun puerto que se tenga disponible
+
+
+# Project Title
+
+# Explicacion clases
+
+## Carpeta Config
+
+### DB.JS 
+
+Aqui se importa la biblioteca Sequelize y se crea una nueva instancia de Sequelize
+para conectarse a una base de datos PostgreSQL. Especifica el nombre de la base de datos como'datoslibros', el nombre de usuario como 'postgres', la contraseña como '123', el host como 'localhost' y el dialecto como 'postgres'(nombre de la aplciacion para la DB). Finalmente, exporta la instancia de Sequelize para su uso en otras
+partes de la aplicación
+
+## Carpeta Models
+
+### Books.JS
+
+Este código define un modelo Sequelize, en el cual definiremos las columnas en la base de Datos, adicionalmente al final de este se parametriza la tabla donde se escogieron las columnas y la relacion entre otra tabla llamada Category que se vera mas adelante,
+Finalmente, exporta la instancia de Book para su uso en otras
+partes de la aplicación
+
+
+### Category.JS
+
+Este código define un modelo Sequelize, en el cual definiremos las columnas en la base de Datos, adicionalmente al final de este se parametriza la tabla donde se escogieron las columnas y la relacion entre otra tabla llamada Books que se vio anteriormente,
+Finalmente, exporta la instancia de Category para su uso en otras
+partes de la aplicación
+
+## Carpeta routes
+
+### books.JS
+
+Este código está configurando una API RESTful utilizando Express. Define rutas para realizar operaciones CRUD en una colección de libros con sus categorías correspondientes
+Finalmente, exporta la instancia de router para su uso en otras
+partes de la aplicación
+
+### categories.js
+
+Este código está configurando una API RESTful utilizando Express. Define rutas para realizar operaciones CRUD en una colección de categorias con sus libros correspondientes
+Finalmente, exporta la instancia de router para su uso en otras
+partes de la aplicación
+
+
+## Index.JS
+
+Este fragmento de código es una aplicación Node.js que utiliza el framework Express para crear un servidor, se tiene escrito como se ingresa a las apis (books y categories) ademas de mostrar en que puerto esta ejecutando
