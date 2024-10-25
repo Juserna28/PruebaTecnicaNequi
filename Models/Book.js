@@ -42,7 +42,7 @@ const Book = sequelize.define('Book', {
     timestamps: false
 }
 );
-
+//Relaicon
 Book.belongsTo(Category, { foreignKey: 'CategoryId' });
 Category.hasMany(Book, { foreignKey: 'CategoryId' });
 

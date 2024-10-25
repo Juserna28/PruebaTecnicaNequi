@@ -25,6 +25,17 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     const { book, author, CategoryId } = req.body;
 
+    // Validación genral de campos
+    if (!book || !author || CategoryId === undefined) {
+        return res.status(400).json({ message: 'Alguno de los campos de book, author y/o CategoryId se encuentra/n vacio/s.' });
+    }
+
+    // Verificar que la categoría existe
+    const categoryExists = await Category.findByPk(CategoryId);
+    if (!categoryExists) {
+        return res.status(404).json({ message: 'La categoría con el ID seleccioando no existe.' });
+    }
+
     try {
         const newBook = await Book.create({ book, author, CategoryId });
         res.status(201).json(newBook);
